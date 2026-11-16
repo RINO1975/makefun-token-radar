@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar · radar-2</title>
+<link rel="stylesheet" href="app.css">
+<script defer src="../data.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<div class="shell">
+<header>
+ <div class="eyebrow"><span class="signal"></span> THE PRE-TOKEN OBSERVATORY <span class="edition">SNAPSHOT <span id="date">2026-11-14</span> · RADAR-2</span></div>
+ <div class="heading"><div><h1>Token Launch Radar<span class="accent">.</span></h1><p class="subtitle">Find the signal before the ticker.</p></div><div class="counts" id="counts"></div></div>
+ <p class="model-line">Implied value = 25% of TVL, adjusted for 7-day growth, age with no token recorded, and chain breadth.</p>
+ <p class="method">Protocols with no token recorded in the snapshot. Wrapped, staked, bridged and exchange products are excluded from additions. Above the TVL floor, only watchlist protocols are ranked: the sealed snapshot has no parent-protocol field. Saturn is a watchlist exception.</p>
+</header>
+<nav class="tabs" aria-label="Radar views"><button id="board-tab" class="active">01 <span>Launch radar</span></button><button id="live-tab">02 <span>Live comparison</span><span class="tab-count">24</span></button><span class="nav-note">ONE SNAPSHOT. ONE TRANSPARENT MODEL.</span></nav>
+<main>
+<section id="board-view">
+ <form class="controls" onsubmit="return false" aria-label="Board filters">
+  <label class="search-label">SEARCH<input id="search" type="search" placeholder="Find a protocol or slug…"></label>
+  <label>CATEGORY<select id="category"><option value="">All categories</option></select></label>
+  <label>CHAIN<select id="chain"><option value="">All chains</option></select></label>
+  <label>SORT BY<select id="sort"><option value="rank">Rank · best first</option><option value="tvl">TVL · highest</option><option value="implied">Implied · highest</option><option value="change">7d change · highest</option><option value="age">Age · oldest</option></select></label>
+  <label class="toggle"><input id="watchlist" type="checkbox"><span>Watchlist only</span></label>
+ </form>
+ <div class="board-layout"><div class="table-card"><div class="section-label"><span id="results"></span><button id="reset" class="text-button">Reset filters ↗</button></div>
+ <div class="table-scroll"><table class="board-table"><thead><tr><th>#</th><th>PROTOCOL</th><th>CATEGORY</th><th>CHAINS</th><th class="num">TVL</th><th class="num">7D</th><th class="num">AGE / D</th><th class="num">IMPLIED VALUE</th></tr></thead><tbody id="board-body"></tbody></table></div><p id="empty" hidden>No protocols match these filters. Try another category or reset filters.</p></div>
+ <aside class="insight"><div class="eyebrow">THE VALUATION LENS</div><h2>Value the record.<br>Not the rumour.</h2><p>A consistent estimate of potential token value, based only on the sealed snapshot.</p><div class="formula">TVL × 0.25<br><span>× growth × maturity × breadth</span></div><div class="factor-note"><b>01 / Growth</b><span>7d TVL change, clamped to −60%…120%. Half-weighted.</span></div><div class="factor-note"><b>02 / Maturity</b><span>0.6× to 1.0× over 1,095 tracked days. Unknown age: 365 days.</span></div><div class="factor-note"><b>03 / Breadth</b><span>+5% per extra chain, capped at four extra chains.</span></div><div class="aside-bottom"><span class="watch-badge">W</span><p>40 house-watchlist protocols.<br>138 eligible early additions.</p></div><p class="disclaimer">Implied values are model estimates, not market caps or promises of a token or airdrop.</p></aside></div>
+</section>
+<section id="live-view" hidden><div class="live-intro"><div><div class="eyebrow">A DIFFERENT MEASUREMENT</div><h2>Already trading.</h2><p>Already have a token — shown for comparison, not ranked.</p></div><div class="live-note">MARKET CAP ≠ IMPLIED VALUE<br><span>24 largest recorded market caps · CEX excluded</span></div></div><div class="table-card"><table><thead><tr><th>PROTOCOL</th><th>CATEGORY</th><th>CHAINS</th><th class="num">MARKET CAP</th><th class="num">TVL</th><th class="num">7D CHANGE</th></tr></thead><tbody id="live-body"></tbody></table></div></section>
+</main>
+<footer><span>RADAR-2 / SEALED SNAPSHOT</span><span>Recorded absence is not proof of no token. Do your own research.</span><span>SELECT A PROTOCOL TO EXPLORE ↗</span></footer>
+</div>
+<dialog id="detail" aria-labelledby="detail-name"><div class="detail-content" id="detail-content"></div></dialog>
+<noscript>This dashboard needs JavaScript to render the sealed snapshot.</noscript>
+</body></html>
